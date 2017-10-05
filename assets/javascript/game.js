@@ -101,6 +101,5 @@ for(var i = 0; i < randomWord.length; i++) {
     }
 }
 
-numberOfGuesses--;
-document.getElementById("livesRemaining").innerHTML = document.getElementById("livesRemaining").innerHTML + numberOfGuesses;
-// display guesses left. check to see if 10 guesses has been reached then start new game.
+// numberOfGuesses--;
+// document.getElementById("livesRemaining").innerHTML = document.getElementById("livesRemaining").innerHTML + numberOfGuesses;
