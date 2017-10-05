@@ -10,14 +10,17 @@ var words = [
 'opossum',
 'pancake'];
 
-// Variable to set the number of guesses
-var numberOfGuesses = 0
+// Random function for choosing a word from the array
+var randomWord = "";
 
 // Holding variable for the user's guessed letters
 var guessedLetters = "";
 
-// Random function for choosing a word from the array
-var randomWord = "";
+// Variable to set the number of guesses
+var numberOfGuesses = 0
+
+// Variable to set the number of wins
+var numberOfWins = 0
 
 var firstTime = true;
 
@@ -34,11 +37,14 @@ document.onkeyup = function(event) {
     }
 }
 
+// Function for starting the game
 function startGame() {
     randomWord = words[Math.floor(Math.random() * words.length)];
     randomWord = randomWord.toUpperCase();
     guessedLetters = "";
     numberOfGuesses = 10;
+    document.getElementById("remainingLives").innerHTML = document.getElementById("remainingLives").innerHTML + " " + numberOfGuesses;
+    document.getElementById("wins").innerHTML = document.getElementById("wins").innerHTML + " " + numberOfWins;
     var displayString = "";
     for(var i = 0; i < randomWord.length; i++) {
         displayString = displayString.concat("_ ");
@@ -46,6 +52,7 @@ function startGame() {
     document.getElementById('theWord').innerHTML = displayString;
 }
 
+// Function for handling the letter guessed by the player
 function playLetter() {
     var letter = document.getElementById('typedLetter').value;
     letter = letter.toUpperCase();
@@ -61,12 +68,11 @@ function playLetter() {
     else {
         guessedLetters = guessedLetters.concat(letter);
         document.getElementById("guesses").innerHTML = document.getElementById("guesses").innerHTML + " " + letter;
-        numberOfGuesses++;
-        // display guesses left. check to see if 10 guesses has been reached then start new game.
     }
     document.getElementById('typedLetter').value = "";
 }
 
+// Functions for verifying that the letter guessed is not a special character or duplicate letter
 function isLetter(ch) {
     if(ch >= "A" && ch <= "Z") {
         return true;
@@ -83,5 +89,18 @@ function isDuplicate(ch) {
     else {
         return false;
     }
-
 }
+
+// Loop for checking if the letter guessed matches any of the letters in the random word
+for(var i = 0; i < randomWord.length; i++) {
+    if(letter === randomWord.charAt(i)) {
+        // change position in displayString to value of letter
+    }
+    else {
+        randomWord.charAt(i).innerHTML = " _";
+    }
+}
+
+numberOfGuesses--;
+document.getElementById("livesRemaining").innerHTML = document.getElementById("livesRemaining").innerHTML + numberOfGuesses;
+// display guesses left. check to see if 10 guesses has been reached then start new game.
