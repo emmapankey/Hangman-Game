@@ -1,7 +1,15 @@
 .container {
     width: 50%;
-    background-color: #dddddd;
+    background-color: #4E6B4B;
     margin: 10% auto;
     padding: 10%;
     text-align: center;
+}
+
+.leftSide {
+    float: left;
+}
+
+.rightSide {
+    float: right;
 }
