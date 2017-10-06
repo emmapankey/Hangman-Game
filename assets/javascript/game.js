@@ -17,7 +17,7 @@ var words = [
     var guessedLetters = "";
     
     // Variable to set the number of guesses
-    var numberOfGuesses = 10
+    var numberOfGuessesLeft = 10
     
     // Variable to set the number of wins
     var numberOfWins = 0
@@ -42,9 +42,9 @@ var words = [
         randomWord = words[Math.floor(Math.random() * words.length)];
         randomWord = randomWord.toUpperCase();
         guessedLetters = "";
-        // numberOfGuesses = 10;
-        document.getElementById("remainingLives").innerHTML = document.getElementById("remainingLives").innerHTML + " " + numberOfGuesses;
-        document.getElementById("wins").innerHTML = document.getElementById("wins").innerHTML + " " + numberOfWins;
+        document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuessesLeft;
+        document.getElementById("guesses").innerHTML = "Letters Already Guessed: " + guessedLetters;
+        document.getElementById("wins").innerHTML = "Wins: " + numberOfWins;
         var displayString = "";
         for(var i = 0; i < randomWord.length; i++) {
             displayString = displayString.concat("_ ");
@@ -57,7 +57,6 @@ var words = [
     function playLetter() {
         var letter = document.getElementById('typedLetter').value;
         letter = letter.toUpperCase();
-        document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuesses--;
         document.getElementById('typedLetter').value = "";
         if(letter === "") {
             return;
@@ -71,6 +70,8 @@ var words = [
         }
         
         else {
+            numberOfGuessesLeft--;
+            document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuessesLeft;
             guessedLetters = guessedLetters.concat(letter);
             document.getElementById("guesses").innerHTML = document.getElementById("guesses").innerHTML + " " + letter;
             var displayString = document.getElementById("theWord").innerHTML;
@@ -91,11 +92,18 @@ var words = [
             for(var i = 0; i < displayStringArray.length; i++) {
                 displayString = displayString.concat(displayStringArray[i]);
             }
-            document.getElementById('theWord').innerHTML = displayString;        
+            document.getElementById('theWord').innerHTML = displayString;
+            
+            if(displayString.indexOf("_") < 0) {
+                numberOfWins++;
+                reset();
+            }
         }
-        // if(displayString.indexOf("_")) {
-        //     startGame;
-        // }
+
+
+        if(numberOfGuessesLeft === 0) {
+            reset();
+        }
 
     }
     
@@ -119,4 +127,8 @@ var words = [
     }
 
     // Function for restarting game
+    function reset() {
+        numberOfGuessesLeft = 10;
+        startGame();
+    }
     
