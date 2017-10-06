@@ -17,7 +17,7 @@ var words = [
     var guessedLetters = "";
     
     // Variable to set the number of guesses
-    var numberOfGuesses = 0
+    var numberOfGuesses = 10
     
     // Variable to set the number of wins
     var numberOfWins = 0
@@ -42,7 +42,7 @@ var words = [
         randomWord = words[Math.floor(Math.random() * words.length)];
         randomWord = randomWord.toUpperCase();
         guessedLetters = "";
-        numberOfGuesses = 10;
+        // numberOfGuesses = 10;
         document.getElementById("remainingLives").innerHTML = document.getElementById("remainingLives").innerHTML + " " + numberOfGuesses;
         document.getElementById("wins").innerHTML = document.getElementById("wins").innerHTML + " " + numberOfWins;
         var displayString = "";
@@ -57,10 +57,12 @@ var words = [
     function playLetter() {
         var letter = document.getElementById('typedLetter').value;
         letter = letter.toUpperCase();
+        document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuesses--;
         document.getElementById('typedLetter').value = "";
         if(letter === "") {
             return;
         }
+
         if(!isLetter(letter)){
             alert("Invalid character. Use only letters a-z. Try again");
         }
@@ -91,9 +93,9 @@ var words = [
             }
             document.getElementById('theWord').innerHTML = displayString;        
         }
-        if(displayString.indexOf("_")) {
-            startGame;
-        }
+        // if(displayString.indexOf("_")) {
+        //     startGame;
+        // }
 
     }
     
@@ -115,39 +117,6 @@ var words = [
             return false;
         }
     }
+
+    // Function for restarting game
     
-    // // Loop for checking if the letter guessed matches any of the letters in the random word. for loop iterates through displayString
-    // var displayStringArray = [];
-    // for(var i = 0; i < displayString.length; i++) {
-    //     displayStringArray.push(displayString.charAt);
-    // }
-
-    // for(var i = 0; i < randomWord.length; i++) {
-    //     if(letter === randomWord.charAt(i)) {
-    //         displayStringArray[i * 2] = letter;
-    //     }
-    // }
-
-    // displayString = "";
-    // for(var i = 0; i < displayStringArray.length; i++) {
-    //     displayString = displayString.concat(displayStringArray[i]);
-    // }
-    // document.getElementById('theWord').innerHTML = displayString;
-
-  
-    
-    // numberOfGuesses--;
-    // document.getElementById("livesRemaining").innerHTML = document.getElementById("livesRemaining").innerHTML + numberOfGuesses;
-    
-
-    // for(var i = 0; i < randomWord.length; i++) {
-    //     displayArray[i] = " _";
-    // }
-    // document.getElementById('theWord').innerHTML = displayArray;
-
-     // for(var i = 0; i < randomWord.length; i++) {
-        //     if(randomWord.length[i] = letter) {
-        //         displayArray[i] = letter;
-        //         numberOfGuesses--;
-        //     }
-        // }
