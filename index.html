@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 </head>
 
 <body>
@@ -17,39 +19,44 @@
             </div>
     </header>
 
+    
+
     <div class="mainContainer">
 
-        <div class="leftSide">
+        <section class="leftSide">
+            <h2>PLACEHOLDER TEXT HERE</h2>
+        </section>
 
-        </div>
 
-        <div class="rightSide">
+        <section class="rightSide">
 
-            <div>
+            <div id="top">
                 <h2 id="theWord">Current Word:</h2>
             </div>
-            <br>
+            <br><br><br><br>
 
-            <div>
+            <div id="inputDiv">
                 <input id="typedLetter" type="text" placeholder="Enter a letter here.">
             </div>
+            <br><br><br><br>
 
-            <div>
-                <h2 id="guesses">Letters Already Guessed:</h2>
+            <div id="guessesDiv">
+                <h2>Letters Already Guessed:</h2>
+                <div id="guesses"></div>
             </div>
-            <br>
+            <br><br><br><br>
 
-            <div>
+            <div id="livesDiv">
                 <h2 id="remainingLives">Lives Remaining:</h2>
             </div>
-            <br>
+            <br><br><br><br>
 
-            <div>
+            <div id="winsDiv">
                 <h2 id="wins">Wins:</h2>
             </div>
             <br>
 
-        </div>
+        </section>
 
     </div>
 </body>

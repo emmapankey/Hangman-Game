@@ -41,9 +41,9 @@ var words = [
     function startGame() {
         randomWord = words[Math.floor(Math.random() * words.length)];
         randomWord = randomWord.toUpperCase();
-        guessedLetters = "";
+        document.getElementById("guesses").innerHTML = guessedLetters;
+        // guessedLetters = "";
         document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuessesLeft;
-        document.getElementById("guesses").innerHTML = "Letters Already Guessed: " + guessedLetters;
         document.getElementById("wins").innerHTML = "Wins: " + numberOfWins;
         var displayString = "";
         for(var i = 0; i < randomWord.length; i++) {
@@ -129,6 +129,7 @@ var words = [
     // Function for restarting game
     function reset() {
         numberOfGuessesLeft = 10;
+        guessedLetters = "";
         startGame();
     }
     
