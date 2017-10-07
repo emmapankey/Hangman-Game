@@ -1,4 +1,3 @@
-
 // Array of words
 var words = [
     'quickest',
