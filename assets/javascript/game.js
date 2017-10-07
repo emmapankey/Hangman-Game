@@ -24,6 +24,9 @@ var numberOfGuessesLeft = 12
     
 // Variable to set the number of wins
 var numberOfWins = 0
+
+// Variable to set the number of losses
+var numberOfLosses = 0
     
 var firstTime = true;
     
@@ -53,6 +56,8 @@ function startGame() {
     document.getElementById("remainingLives").innerHTML = "Lives Remaining: " + numberOfGuessesLeft;
 
     document.getElementById("wins").innerHTML = "Wins: " + numberOfWins;
+
+    document.getElementById("losses").innerHTML = "Losses: " + numberOfLosses;
 
     var displayString = "";
     for(var i = 0; i < randomWord.length; i++) {
@@ -123,6 +128,7 @@ function playLetter() {
 
     // If all lives are used restart game
     if(numberOfGuessesLeft === 0) {
+        numberOfLosses++;
         startGame();
     }
 

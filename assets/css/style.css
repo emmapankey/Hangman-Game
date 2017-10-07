@@ -77,6 +77,15 @@ input {
     text-align: center;
 }
 
+#wins {
+    display: inline-block;
+    padding-right: 40px;
+}
+
+#losses {
+    display: inline-block;
+}
+
 @media screen and (max-width: 1000px){
     .panel {
         margin-left: 270px;
